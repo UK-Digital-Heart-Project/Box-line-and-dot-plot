@@ -1,14 +1,13 @@
 library(ggplot2)
+library(readr)
 
 # This is the RBF and BAT data for the 6 GTN subjects MEAN PERFUSION (CORTEX) AVERAGED L-R and MEAN BAT (CORTEX) - AVERAGED L-R
 # from GTN - CORTEX AND MEDULLA - BY IMAGE EROSION - CONTROL-IMAGE T1 MAPS - ALL STUDIES
 
 # Read the data in from a separate file in long format
 
-
-RBF = read_csv("./RBF.csv")
-RBF = data.frame(RBF)
-
+test = read_csv("./test_data.csv")
+test = data.frame(test)
 
 # Create a nice theme
 
@@ -28,19 +27,10 @@ theme_update(axis.line.y = element_line(colour="black"),
 
 # Dot and box plot with joined lines
 
-ggplot(data=RBF, aes (x=factor(Time), y= RBF)) +
+ggplot(data=test, aes (x=factor(Time), y= Value)) +
+  geom_line(aes(group=ID, colour="black"), alpha=I(0.5), lwd=1.5, linetype="dashed") +
   geom_point(size = 4, colour = "lightskyblue1") +
-  geom_line(aes(group=ID, colour="black"), alpha=I(0.3), lwd=1, linetype="dashed") +
-  scale_y_continuous (limits=c(170,260), expand=c(0,0.2)) +
+  scale_y_continuous (limits=c(60,150), expand=c(0,0.2)) +
   xlab("\nTime [mins]") +
-  ylab("Cortical Perfusion [ml/min/100 g]\n") +
+  ylab("Units\n") +
   geom_boxplot(outlier.shape=NA, fill= NA,  colour="black", width=0.2, lwd=1)
-
-ggplot(data=RBF, aes (x=factor(Time), y= BAT)) +
-  geom_point(size = 4, colour = "lightskyblue1") +
-  geom_line(aes(group=ID, colour="black"), alpha=I(0.3), lwd=1, linetype="dashed") +
-  scale_y_continuous (limits=c(200,650), expand=c(0,0.2)) +
-  xlab("\nTime [mins]") +
-  ylab("Blood Arrival Time [ms]\n") +
-  geom_boxplot(outlier.shape=NA, fill= NA,  colour="black", width=0.2, lwd=1)
-
