@@ -1,9 +1,6 @@
 library(ggplot2)
 library(readr)
 
-# This is the RBF and BAT data for the 6 GTN subjects MEAN PERFUSION (CORTEX) AVERAGED L-R and MEAN BAT (CORTEX) - AVERAGED L-R
-# from GTN - CORTEX AND MEDULLA - BY IMAGE EROSION - CONTROL-IMAGE T1 MAPS - ALL STUDIES
-
 # Read the data in from a separate file in long format
 
 test = read_csv("./test_data.csv")
