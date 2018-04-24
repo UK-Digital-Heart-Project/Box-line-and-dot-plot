@@ -1,10 +1,11 @@
+install.packages("ggplot2")
+install.packages("readr")
 library(ggplot2)
 library(readr)
 
 # Read the data in from a separate file in long format
 
-test = read_csv("./test_data.csv")
-test = data.frame(test)
+test = data.frame(read_csv("./test_data.csv"))
 
 # Create a nice theme
 
