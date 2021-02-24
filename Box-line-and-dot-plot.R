@@ -1,7 +1,4 @@
-install.packages("ggplot2")
-install.packages("readr")
-library(ggplot2)
-library(readr)
+renv::restore()
 
 # Read the data in from a separate file in long format. Six subjects each with 4 timepoints.
 
